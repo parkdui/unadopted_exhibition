@@ -194,8 +194,9 @@
     padding: 90px 18px 0;
   }
   .title {
-    font-size: 88px;
-    line-height: 78px;
+    /* Responsive to viewport width (prevents UNADOPTED clipping). */
+    font-size: clamp(40px, 13vw, 88px);
+    line-height: clamp(38px, 11.5vw, 78px);
   }
   .subtitle {
     font-size: 40px;
