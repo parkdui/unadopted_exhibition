@@ -282,6 +282,7 @@ function FallingCircles({ active }) {
         spawnAt: performance.now() + c.delayMs,
         phase: "waiting", // waiting -> falling -> float
         nextTurnAt: 0,
+        entered: false,
       };
     });
 
@@ -296,12 +297,16 @@ function FallingCircles({ active }) {
       const ay = Number.isFinite(a.y) ? a.y : 0;
       const az = Number.isFinite(a.z) ? a.z : 0;
 
+      // Flip direction (user expectation: tilt/shake maps opposite).
+      const fx = -ax;
+      const fy = ay;
+
       // Continuous small "push" so any shaking/tilting feels responsive.
       for (let i = 0; i < state.length; i += 1) {
         const s = state[i];
         if (s.phase === "waiting") continue;
-        s.vx = Math.max(-MAX_V, Math.min(MAX_V, s.vx + ax * MOTION_FORCE));
-        s.vy = Math.max(-MAX_V, Math.min(MAX_V, s.vy + -ay * MOTION_FORCE));
+        s.vx = Math.max(-MAX_V, Math.min(MAX_V, s.vx + fx * MOTION_FORCE));
+        s.vy = Math.max(-MAX_V, Math.min(MAX_V, s.vy + fy * MOTION_FORCE));
       }
 
       const mag = Math.hypot(ax, ay, az);
@@ -319,8 +324,8 @@ function FallingCircles({ active }) {
         if (s.phase === "waiting") continue;
         const jitterX = (Math.random() * 2 - 1) * 90;
         const jitterY = (Math.random() * 2 - 1) * 90;
-        s.vx = Math.max(-MAX_V, Math.min(MAX_V, s.vx + ax * SHAKE_IMPULSE + jitterX));
-        s.vy = Math.max(-MAX_V, Math.min(MAX_V, s.vy + -ay * SHAKE_IMPULSE + jitterY));
+        s.vx = Math.max(-MAX_V, Math.min(MAX_V, s.vx + fx * SHAKE_IMPULSE + jitterX));
+        s.vy = Math.max(-MAX_V, Math.min(MAX_V, s.vy + fy * SHAKE_IMPULSE + jitterY));
       }
     }
 
@@ -365,11 +370,10 @@ function FallingCircles({ active }) {
         s.vx = -Math.abs(s.vx) * WALL_RESTITUTION;
       }
 
-      if (s.phase === "float") {
-        if (s.y - s.r < 0) {
-          s.y = s.r;
-          s.vy = Math.abs(s.vy) * WALL_RESTITUTION;
-        }
+      // Top boundary: allow initial entry from above, but once entered, never escape.
+      if (s.entered && s.y - s.r < 0) {
+        s.y = s.r;
+        s.vy = Math.abs(s.vy) * WALL_RESTITUTION;
       }
 
       if (s.y + s.r > h) {
@@ -450,6 +454,8 @@ function FallingCircles({ active }) {
           continue;
         }
 
+        if (!s.entered && s.y >= s.r) s.entered = true;
+
         if (s.phase === "falling") {
           // Gravity-driven fall with slight sideways drift (random initial vx).
           s.vy += GRAVITY * dt;
@@ -464,6 +470,7 @@ function FallingCircles({ active }) {
             s.vx = Math.cos(angle) * speed;
             s.vy = -Math.abs(Math.sin(angle) * speed) * 0.8;
             s.nextTurnAt = now + 1800 + (i % 4) * 650;
+            s.entered = true;
           }
           continue;
         }
