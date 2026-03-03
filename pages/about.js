@@ -7,8 +7,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 export default function AboutPage() {
   // NOTE: user-specified ScrollReveal params (must be preserved)
   const scrollRevealProps = {
-    baseOpacity: 0.1,
-    enableBlur: false,
+    baseOpacity: 0.4,
+    enableBlur: true,
     baseRotation: 0,
     blurStrength: 4,
   };
@@ -64,7 +64,7 @@ export default function AboutPage() {
                 성장을 멈추곤 합니다. 이리저리 치이다가 결국 빛을 보지 못하고 마음 한 켠에
                 내던져지고 맙니다.
               </ScrollReveal>
-              <br />
+              
               <br />
               <ScrollReveal {...scrollRevealProps}>
                 이제 손을 내밀어 그들을 다시 꺼내어봅시다. 두텁게 쌓인 먼지를 닦아내고, 따뜻한
@@ -72,14 +72,14 @@ export default function AboutPage() {
                 창작자 자신들에게는 버려지지 않은, 아직 채택될 기회가 있는 아이디어들이기
                 때문입니다.
               </ScrollReveal>
-              <br />
+              
               <br />
               <ScrollReveal {...scrollRevealProps}>
                 〈채택받지 못한 아이들〉은 여섯 명이 각자의 묵혀둔 아이디어를 마침내 꺼내보이는 웹
                 전시입니다. 바쁜 학기를 마치고 약 두 달 남짓의 시간동안 갈고 닦은 아이들을 무대에
                 올려두려 합니다.
               </ScrollReveal>
-              <br />
+              
               <br />
               <ScrollReveal {...scrollRevealProps}>
                 마음껏, 있는 힘껏, 모두 채택해주시길 바랍니다.
@@ -95,7 +95,7 @@ export default function AboutPage() {
                 they fail to see the light of day and are eventually left in a quiet corner of our
                 hearts.
               </ScrollReveal>
-              <br />
+              
               <br />
               <ScrollReveal {...scrollRevealProps}>
                 Now, let us reach out and bring them back. Let us wipe away the thick layer of dust,
@@ -103,14 +103,13 @@ export default function AboutPage() {
                 selected by others, they were never abandoned by their creators. They remain ideas
                 that still deserve a chance to be chosen.
               </ScrollReveal>
-              <br />
+              
               <br />
               <ScrollReveal {...scrollRevealProps}>
                 {"<The Unadopted>"} is a web exhibition where six creators finally unveil the ideas
                 they had long kept tucked away. After completing a busy semester, we spent nearly two
                 months refining and nurturing these works, preparing to place them on stage at last.
               </ScrollReveal>
-              <br />
               <br />
               <ScrollReveal {...scrollRevealProps}>
                 Freely, wholeheartedly—we invite you to adopt them all.
