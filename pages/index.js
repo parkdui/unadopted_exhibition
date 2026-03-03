@@ -62,7 +62,7 @@ export default function Home() {
           <h1 className={styles.title}>
             THE
             <br />
-            UNADOPTED
+            <span className={styles.titleLine2}>UNADOPTED</span>
           </h1>
           <h2 className={styles.subtitle}>채택받지 못한 아이들</h2>
         </main>

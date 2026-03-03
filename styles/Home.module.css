@@ -48,8 +48,14 @@
   font-weight: 400;
   line-height: 160px;
   letter-spacing: -12px;
-  word-wrap: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
   margin: 0;
+}
+
+.titleLine2 {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .subtitle {
