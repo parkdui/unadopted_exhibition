@@ -1,21 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function AboutPage() {
+export default function Project1Page() {
   return (
     <>
       <Head>
-        <title>About • The Unadopted</title>
-        <meta name="description" content="About" />
+        <title>Project 1 • The Unadopted</title>
+        <meta name="description" content="Project 1" />
       </Head>
       <main style={{ minHeight: "100vh", padding: 32, background: "#fff", color: "#000" }}>
         <Link href="/">← Home</Link>
         <h1 style={{ marginTop: 18, fontFamily: "Syne, ui-sans-serif, system-ui", fontWeight: 400 }}>
-          About
+          Project 1
         </h1>
-        <p style={{ marginTop: 10, maxWidth: 720, lineHeight: 1.6 }}>
-          (placeholder) 프로젝트 소개 텍스트를 여기에 넣으면 돼.
-        </p>
       </main>
     </>
   );

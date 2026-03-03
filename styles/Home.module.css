@@ -1,141 +1,199 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
+.mainPage {
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  background: #ffffff;
+  color: #000000;
+  position: relative;
+  overflow: hidden;
 }
 
-.main {
-  display: flex;
-  min-height: 100vh;
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 32px;
+  pointer-events: none;
+}
+
+.navLeft {
   width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  pointer-events: auto;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
+.navItem {
+  color: black;
   font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+  font-family: "Neue Haas Grotesk Display Pro", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Helvetica, Arial;
+  font-weight: 450;
+  word-wrap: break-word;
 }
 
-.intro a {
+.hero {
+  padding: 120px 32px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  color: black;
+  font-size: 200px;
+  font-family: "Syne", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-weight: 400;
+  line-height: 160px;
+  letter-spacing: -12px;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.subtitle {
+  color: black;
+  font-size: 80px;
+  font-family: "Pretendard Variable", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial;
   font-weight: 500;
-  color: var(--text-primary);
+  word-wrap: break-word;
+  margin: 0;
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+.circlesLayer {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  z-index: 50;
+  pointer-events: none;
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+.circle {
+  position: absolute;
+  top: 0;
+  border-radius: 9999px;
+  z-index: 50;
+  pointer-events: auto;
+  background: #000000;
+  will-change: transform;
+  touch-action: manipulation;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.circle:hover,
+.circle:focus-visible {
+  background: var(--hover-color, #000000);
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.circle:focus-visible {
+  outline: 3px solid rgba(0, 0, 0, 0.35);
+  outline-offset: 6px;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+.motionButton {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 120;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  color: #000;
+  border-radius: 999px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1;
+  backdrop-filter: blur(10px);
+}
+
+.motionButton:disabled {
+  opacity: 0.6;
+}
+
+.onboarding {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #1a1a1a;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+.onboardingExit {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.onboardingText {
+  text-align: center;
+  color: #f1f1f1;
+  font-size: 80px;
+  font-family: "Syne", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-weight: 400;
+  word-wrap: break-word;
+  line-height: 1.06;
+  padding: 0 24px;
+}
+
+.splitChar {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  filter: blur(8px);
+  animation: splitIn 0.7s cubic-bezier(0.18, 0.9, 0.22, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+
+.splitSpace {
+  width: 0.35em;
+}
+
+@keyframes splitIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    filter: blur(8px);
   }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px);
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 104px;
   }
-
-  .intro {
-    gap: 16px;
+  .title {
+    font-size: 132px;
+    line-height: 110px;
   }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
+  .subtitle {
+    font-size: 56px;
+  }
+  .onboardingText {
+    font-size: 56px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+@media (max-width: 520px) {
+  .navbar {
+    padding: 18px 18px;
   }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .hero {
+    padding: 90px 18px 0;
+  }
+  .title {
+    font-size: 88px;
+    line-height: 78px;
+  }
+  .subtitle {
+    font-size: 40px;
+  }
+  .onboardingText {
+    font-size: 40px;
   }
 }
