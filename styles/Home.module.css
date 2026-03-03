@@ -204,3 +204,9 @@
     font-size: 40px;
   }
 }
+
+@media (max-width: 500px) {
+  .title {
+    letter-spacing: -6px;
+  }
+}
