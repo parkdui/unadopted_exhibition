@@ -1,0 +1,233 @@
+.main {
+  padding: 120px 32px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.backHome {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #000;
+  font-size: 18px;
+  font-family: "Syne", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-weight: 400;
+}
+
+.backHome:hover,
+.backHome:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.titleSubtitleSection {
+  width: 100%;
+  max-width: 800px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.titleEn {
+  color: #000;
+  font-family: "Syne", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-size: 146.041px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.8; /* 80% */
+  letter-spacing: -0.06em; /* responsive to font-size */
+}
+
+.titleKo {
+  color: #000;
+  font-family: "Pretendard Variable", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial;
+  font-size: 58.416px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.subtitle {
+  margin-top: 40px;
+  width: 100%;
+  font-family: "Syne", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.04em; /* -1.6px at 40px */
+  word-wrap: break-word;
+}
+
+.subtitleDark {
+  color: #1e1e1e;
+}
+
+.subtitlePink {
+  color: #f849c1;
+}
+
+.descriptionSection {
+  margin-top: 120px;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.descKo,
+.descEn {
+  align-self: stretch;
+  color: #1e1e1e;
+  font-family: "Pretendard Variable", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.6; /* 160% */
+}
+
+.descKo {
+  word-break: keep-all; /* 단어가 끊어지지 않도록 */
+  overflow-wrap: normal;
+}
+
+.descEn {
+  margin-top: 80px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.periodSection {
+  margin-top: 120px;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  color: #1e1e1e;
+  font-family: "Pretendard Variable", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.6; /* 160% */
+}
+
+.periodTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.periodDescription {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.participantsSection {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.participantsTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.participantsDescription {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+
+@media (max-width: 900px) {
+  .main {
+    padding: 104px 24px 104px;
+  }
+
+  .titleEn {
+    font-size: 108px;
+  }
+
+  .titleKo {
+    font-size: 44px;
+  }
+
+  .subtitle {
+    font-size: 28px;
+  }
+
+  .descKo,
+  .descEn {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .main {
+    padding: 90px 18px 90px;
+  }
+
+  .titleEn {
+    font-size: clamp(44px, 12vw, 86px);
+  }
+
+  .titleKo {
+    font-size: clamp(22px, 6.2vw, 40px);
+  }
+
+  .subtitle {
+    margin-top: 32px;
+    font-size: 20px;
+  }
+
+  .descKo,
+  .descEn {
+    font-size: 16px;
+  }
+
+  .descEn {
+    margin-top: 56px;
+  }
+
+  .descriptionSection {
+    margin-top: 88px;
+  }
+
+  .periodSection {
+    margin-top: 88px;
+  }
+  
+  .periodTitle {
+    font-size: 16px;
+  }
+  .periodDescription {
+    font-size: 16px;
+  }
+
+  .participantsTitle {
+    font-size: 16px;
+  }
+  .participantsDescription {
+    font-size: 16px;
+  }
+
+}
+

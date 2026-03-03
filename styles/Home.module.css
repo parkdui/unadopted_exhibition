@@ -195,8 +195,8 @@
   }
   .title {
     /* Responsive to viewport width (prevents UNADOPTED clipping). */
-    font-size: clamp(40px, 13vw, 88px);
-    line-height: clamp(38px, 11.5vw, 78px);
+    font-size: clamp(38px, 13vw, 92px);
+    line-height: clamp(36px, 11.5vw, 82px);
   }
   .subtitle {
     font-size: 40px;
@@ -206,6 +206,7 @@
   }
 }
 
+/* Tracking tweak for <=500px layouts. */
 @media (max-width: 500px) {
   .title {
     letter-spacing: -6px;
