@@ -178,6 +178,15 @@ function FallingCircles({ active }) {
     return () => mq.removeEventListener?.("change", update);
   }, []);
 
+  useEffect(() => {
+    // On Android/most browsers, no permission prompt exists. Auto-enable once on handheld.
+    if (!isHandheld) return undefined;
+    if (!motionSupported) return undefined;
+    if (motionNeedsPermission) return undefined;
+    const t = window.setTimeout(() => setMotionEnabled(true), 0);
+    return () => window.clearTimeout(t);
+  }, [isHandheld, motionNeedsPermission, motionSupported]);
+
   const circles = useMemo(() => {
     const colors = ["#FBF130", "#FB3D3D", "#FF9B4E", "#14F86C", "#60A0FB", "#60A0FB"];
     const lefts = [12, 28, 44, 60, 76, 90]; // %
@@ -236,6 +245,8 @@ function FallingCircles({ active }) {
     const SHAKE_COOLDOWN_MS = 260;
     const SHAKE_IMPULSE = 8.5; // scales acceleration -> px/s
     const ORIENTATION_THRESHOLD = 18; // degrees
+    const MOTION_FORCE = 16; // continuous impulse multiplier
+    const MAX_V = 1200;
 
     const state = circles.map((c, idx) => {
       const rand = (() => {
@@ -285,6 +296,14 @@ function FallingCircles({ active }) {
       const ay = Number.isFinite(a.y) ? a.y : 0;
       const az = Number.isFinite(a.z) ? a.z : 0;
 
+      // Continuous small "push" so any shaking/tilting feels responsive.
+      for (let i = 0; i < state.length; i += 1) {
+        const s = state[i];
+        if (s.phase === "waiting") continue;
+        s.vx = Math.max(-MAX_V, Math.min(MAX_V, s.vx + ax * MOTION_FORCE));
+        s.vy = Math.max(-MAX_V, Math.min(MAX_V, s.vy + -ay * MOTION_FORCE));
+      }
+
       const mag = Math.hypot(ax, ay, az);
       const delta = Math.abs(mag - lastMag);
       lastMag = mag;
@@ -300,8 +319,8 @@ function FallingCircles({ active }) {
         if (s.phase === "waiting") continue;
         const jitterX = (Math.random() * 2 - 1) * 90;
         const jitterY = (Math.random() * 2 - 1) * 90;
-        s.vx += ax * SHAKE_IMPULSE + jitterX;
-        s.vy += -ay * SHAKE_IMPULSE + jitterY;
+        s.vx = Math.max(-MAX_V, Math.min(MAX_V, s.vx + ax * SHAKE_IMPULSE + jitterX));
+        s.vy = Math.max(-MAX_V, Math.min(MAX_V, s.vy + -ay * SHAKE_IMPULSE + jitterY));
       }
     }
 
@@ -322,8 +341,8 @@ function FallingCircles({ active }) {
         if (s.phase === "waiting") continue;
         const jitterX = (Math.random() * 2 - 1) * 110;
         const jitterY = (Math.random() * 2 - 1) * 110;
-        s.vx += jitterX;
-        s.vy += jitterY;
+        s.vx = Math.max(-MAX_V, Math.min(MAX_V, s.vx + jitterX));
+        s.vy = Math.max(-MAX_V, Math.min(MAX_V, s.vy + jitterY));
       }
     }
 
@@ -510,7 +529,9 @@ function FallingCircles({ active }) {
 
   return (
     <div className={styles.circlesLayer} aria-hidden="false">
-      {isHandheld && motionSupported && (!window.isSecureContext || !motionEnabled || (motionNeedsPermission && !motionGranted)) ? (
+      {isHandheld &&
+      motionSupported &&
+      (!window.isSecureContext || (motionNeedsPermission && !motionGranted) || !motionEnabled) ? (
         <button
           type="button"
           className={styles.motionButton}
