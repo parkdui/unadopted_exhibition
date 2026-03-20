@@ -49,6 +49,9 @@ export default function Home() {
       <div className={styles.mainPage}>
         <header className={styles.navbar} role="navigation" aria-label="Global">
           <div className={styles.navLeft}>
+            <Link className={styles.navItem} href="/">
+              Home
+            </Link>
             <Link className={styles.navItem} href="/about">
               About
             </Link>

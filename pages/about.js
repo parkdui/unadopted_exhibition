@@ -23,6 +23,9 @@ export default function AboutPage() {
       <div className={navStyles.mainPage}>
         <header className={navStyles.navbar} role="navigation" aria-label="Global">
           <div className={navStyles.navLeft}>
+            <Link className={navStyles.navItem} href="/">
+              Home
+            </Link>
             <Link className={navStyles.navItem} href="/about" aria-current="page">
               About
             </Link>

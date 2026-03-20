@@ -1,0 +1,286 @@
+.page {
+  background: #ffffff;
+  color: #1e1e1e;
+  min-height: 100vh;
+  padding-bottom: 140px;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 28px 120px;
+  pointer-events: none;
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  pointer-events: auto;
+}
+
+.navLink {
+  font-family: "Neue Haas Grotesk Display Pro", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial;
+  font-size: 18px;
+  color: #000000;
+}
+
+.hero {
+  width: 100%;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content {
+  padding: 80px 120px 0;
+}
+
+.intro {
+  /* width: min(445px, 100%); */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.name {
+  font-size: 24px;
+}
+
+.titleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title, .subtitle {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 160%; /* 64px */
+  color: #1E1E1E;
+  font-family: "Pretendard Variable";
+}
+
+.descriptionKo {
+  margin-top: 40px;
+  width: min(692px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  line-height: 1.6;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 160%; /* 38.4px */
+  color: #1E1E1E;
+  font-family: "Pretendard Variable";
+}
+
+.descriptionEn {
+  margin-top: 12px;
+  width: min(692px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  line-height: 1.6;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 160%; /* 38.4px */
+  color: #1E1E1E;
+  font-family: "Pretendard Variable";
+}
+
+.mediaStack {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grayBox {
+  width: 100%;
+  background: #dadada;
+  color: #1e1e1e;
+  font-size: 24px;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  padding: 48px;
+}
+
+.grayBoxSmall {
+  min-height: 560px;
+}
+
+.grayBoxLarge {
+  min-height: 921px;
+}
+
+.grayBoxVideo {
+  min-height: 670px;
+}
+
+.hintText {
+  max-width: 760px;
+}
+
+.hintTitle {
+  margin-bottom: 14px;
+}
+
+.logoStrip {
+  width: 100%;
+  aspect-ratio: 1898 / 480;
+  background: #000000;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-family: "Syne", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-size: clamp(44px, 7vw, 110px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.splitGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.splitCell {
+  min-height: 725px;
+  background: #dadada;
+  padding: 48px;
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+.websiteBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.websiteLink {
+  font-size: 24px;
+  line-height: 1.6;
+  text-decoration: underline;
+  width: fit-content;
+}
+
+.footerMeta {
+  padding: 40px 120px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.metaLabel {
+  width: 82px;
+}
+
+.ctaWrap {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ctaButton {
+  background: #1a1a1a;
+  color: #f4f4f4;
+  border-radius: 92px;
+  padding: 16px 28px;
+  font-family: "Syne", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  border: 0;
+}
+
+.ctaDot {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    padding: 22px 24px;
+  }
+
+  .content {
+    padding: 56px 24px 0;
+  }
+
+  .description {
+    font-size: 20px;
+  }
+
+  .grayBox,
+  .splitCell,
+  .websiteLink,
+  .footerMeta {
+    font-size: 20px;
+  }
+
+  .splitGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .footerMeta {
+    padding: 40px 24px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .title,
+  .subtitle {
+    font-size: 32px;
+  }
+
+  .grayBox,
+  .splitCell {
+    min-height: 420px;
+    padding: 24px;
+  }
+
+  .ctaWrap {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .ctaButton {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+
+  .ctaDot {
+    width: 24px;
+    height: 24px;
+  }
+}
