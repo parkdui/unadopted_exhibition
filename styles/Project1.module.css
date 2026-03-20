@@ -220,12 +220,26 @@
   font-weight: 600;
   letter-spacing: -0.04em;
   border: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.ctaDot {
+.ctaButton:hover,
+.ctaButton:focus-visible {
+  background: #f4f4f4;
+  color: #1a1a1a;
+}
+
+.ctaLever {
   width: 40px;
   height: 40px;
   display: block;
+  transform-origin: 50% 50%;
+  transition: transform 0.2s ease;
+}
+
+.ctaButton:hover + .ctaLever,
+.ctaButton:focus-visible + .ctaLever {
+  transform: rotate(24deg);
 }
 
 @media (max-width: 1024px) {
@@ -279,7 +293,7 @@
     padding: 12px 18px;
   }
 
-  .ctaDot {
+  .ctaLever {
     width: 24px;
     height: 24px;
   }

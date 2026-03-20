@@ -1,10 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "@/styles/Project1.module.css";
 
+const PROJECT_COUNT = 6;
+const CURRENT_PROJECT = 2;
+
 export default function Project2Page() {
+  const router = useRouter();
   const heroImageUrl = "https://www.figma.com/api/mcp/asset/5af4d540-6eca-4e8b-9d45-bafd85c3214c";
-  const ctaDotUrl = "https://www.figma.com/api/mcp/asset/27dd6947-9b2a-4cd0-93fa-0104049897d1";
 
   return (
     <>
@@ -73,10 +77,20 @@ export default function Project2Page() {
         </footer>
 
         <div className={styles.ctaWrap}>
-          <button type="button" className={styles.ctaButton}>
-            Click to adopt!
+          <button
+            type="button"
+            className={styles.ctaButton}
+            onClick={() => {
+              let randomProject = CURRENT_PROJECT;
+              while (randomProject === CURRENT_PROJECT) {
+                randomProject = Math.floor(Math.random() * PROJECT_COUNT) + 1;
+              }
+              router.push(`/project${randomProject}`);
+            }}
+          >
+            Click to adopt another one!
           </button>
-          <img className={styles.ctaDot} src={ctaDotUrl} alt="" />
+          <img className={styles.ctaLever} src="/lever.svg" alt="" />
         </div>
       </main>
     </>

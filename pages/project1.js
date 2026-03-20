@@ -1,8 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "@/styles/Project1.module.css";
 
+const PROJECT_COUNT = 6;
+const CURRENT_PROJECT = 1;
+
 export default function Project1Page() {
+  const router = useRouter();
   const heroImageUrl = "/exhibition_src/1_eogeumni/1.jpg";
   const firstMediaImageUrl = "/exhibition_src/1_eogeumni/2.jpg";
   const spreadImageSources = Array.from(
@@ -10,7 +15,6 @@ export default function Project1Page() {
     (_, index) => `/exhibition_src/1_eogeumni/image_spread/book_${index + 1}.png`,
   );
   const lastMediaImageUrl = "/exhibition_src/1_eogeumni/last.jpg";
-  const ctaDotUrl = "https://www.figma.com/api/mcp/asset/27dd6947-9b2a-4cd0-93fa-0104049897d1";
 
   return (
     <>
@@ -61,17 +65,17 @@ export default function Project1Page() {
           </div>
 
           <div className={styles.mediaStack}>
-            <img className={styles.heroImage} src={firstMediaImageUrl} alt="Project 1 image 2" loading="eager" />
+            <img className={styles.heroImage} src={firstMediaImageUrl} alt="Project 1 visual 2" loading="eager" />
             {spreadImageSources.map((src, index) => (
               <img
                 key={src}
                 className={styles.heroImage}
                 src={src}
-                alt={`Project 1 spread image ${index + 1}`}
+                alt={`Project 1 spread visual ${index + 1}`}
                 loading="lazy"
               />
             ))}
-            <img className={styles.heroImage} src={lastMediaImageUrl} alt="Project 1 last image" loading="lazy" />
+            <img className={styles.heroImage} src={lastMediaImageUrl} alt="Project 1 ending visual" loading="lazy" />
           </div>
         </section>
 
@@ -87,10 +91,20 @@ export default function Project1Page() {
         </footer>
 
         <div className={styles.ctaWrap}>
-          <button type="button" className={styles.ctaButton}>
-            Click to adopt!
+          <button
+            type="button"
+            className={styles.ctaButton}
+            onClick={() => {
+              let randomProject = CURRENT_PROJECT;
+              while (randomProject === CURRENT_PROJECT) {
+                randomProject = Math.floor(Math.random() * PROJECT_COUNT) + 1;
+              }
+              router.push(`/project${randomProject}`);
+            }}
+          >
+            Click to adopt another one!
           </button>
-          <img className={styles.ctaDot} src={ctaDotUrl} alt="" />
+          <img className={styles.ctaLever} src="/lever.svg" alt="" />
         </div>
       </main>
     </>

@@ -148,7 +148,7 @@ export default function ProjectPageTemplate({ projectNumber }) {
 
         <div className={styles.ctaWrap}>
           <button type="button" className={styles.ctaButton}>
-            Click to adopt!
+            Click to adopt another one!
           </button>
           <img className={styles.ctaDot} src={ctaDotUrl} alt="" />
         </div>

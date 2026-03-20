@@ -5,8 +5,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "@/styles/Home.module.css";
 
 const ONBOARDING_KEY = "unadopted:onboarding:v1";
+const PROJECT_COUNT = 6;
+const PLAYFIELD_HEIGHT_RATIO = 0.8;
 
 export default function Home() {
+  const router = useRouter();
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [bootReady, setBootReady] = useState(false);
 
@@ -71,6 +74,19 @@ export default function Home() {
         </main>
 
         <FallingCircles active={!showOnboarding} />
+        <div className={styles.randomAdoptArea}>
+          <button
+            type="button"
+            className={styles.randomAdoptButton}
+            onClick={() => {
+              const randomProject = Math.floor(Math.random() * PROJECT_COUNT) + 1;
+              router.push(`/project${randomProject}`);
+            }}
+          >
+            Click to randomly adopt!
+          </button>
+          <img className={styles.randomAdoptLever} src="/lever.svg" alt="" />
+        </div>
 
         {showOnboarding ? (
           <Onboarding
@@ -266,7 +282,7 @@ function FallingCircles({ active }) {
       })();
 
       const w = window.innerWidth || 1200;
-      const h = window.innerHeight || 900;
+      const h = Math.round((window.innerHeight || 900) * PLAYFIELD_HEIGHT_RATIO);
       const r = c.size / 2;
       const baseX = (c.left / 100) * w;
       const x = Math.max(r, Math.min(w - r, baseX + (rand() * 2 - 1) * 40));
@@ -443,7 +459,7 @@ function FallingCircles({ active }) {
       last = now;
 
       const w = window.innerWidth || 1200;
-      const h = window.innerHeight || 900;
+      const h = Math.round((window.innerHeight || 900) * PLAYFIELD_HEIGHT_RATIO);
 
       // Integrate motion first.
       for (let i = 0; i < state.length; i += 1) {
@@ -592,5 +608,6 @@ function FallingCircles({ active }) {
         );
       })}
     </div>
+
   );
 }
