@@ -44,12 +44,14 @@ export default function Project2Page() {
             </div>
           </div>
 
-          <div className={styles.description}>
+          <div className={styles.descriptionKo}>
             <p>
               이것은 작품 설명입니다. 이것은 단지 예시를 나타내기 위한 더미 텍스트입니다. 진짜 텍스트가 아직
               아닙니다. 참고만 부탁드립니다. 이것은 작품 설명입니다. 이것은 단지 예시를 나타내기 위한 더미
               텍스트입니다. 진짜 텍스트가 아직 아닙니다. 참고만 부탁드립니다.
             </p>
+            </div>
+            <div className={styles.descriptionEn}>
             <p>
               This is a paragraph of description of the project above. This is just a test text, not a real one.
               This is a paragraph of description of the project above. This is just a test text, not a real one.
@@ -68,11 +70,11 @@ export default function Project2Page() {
         <footer className={styles.footerMeta}>
           <div className={styles.metaRow}>
             <span className={styles.metaLabel}>IG</span>
-            <span>@instagram</span>
+            <a  className={styles.websiteLink} href="https://www.instagram.com/jiweon554/" target="_blank" rel="noreferrer">@jiweon554</a>
           </div>
           <div className={styles.metaRow}>
             <span className={styles.metaLabel}>Email</span>
-            <span>email@example.com</span>
+            <a  className={styles.websiteLink} href="mailto:parkgiwon050@gmail.com" target="_blank" rel="noreferrer">parkgiwon050@gmail.com</a>
           </div>
         </footer>
 

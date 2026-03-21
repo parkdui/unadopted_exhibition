@@ -60,7 +60,7 @@ export default function Project5Page() {
             <div className={styles.descriptionEn}>
             <p>
             At times, I fall into deep hesitation over even placing a single dot, let alone drawing a line. Unable to decide anything, I remain suspended in a state of stillness. Yet within that silence, the only thing I can do is to look for what can be attempted in the present moment and begin, one by one, without much certainty. In time, a moment arrives when those scattered fragments reveal themselves to be connected by invisible lines. What first felt like mere bluster or empty attempts turns out to be nothing more—and nothing less—than an ordinary yet persistent process.<br /><br />
-This work cites and reconfigures passages from Transcendental Etude by Adrienne Rich. As Rich writes, the act of gathering the shards of a shattered mirror and weaving them into a pattern that never existed before closely resembles my own way of working. We are born, after all, into the midst of a difficult movement already sounding—before we have even learned how to read the beat. This seemingly useless web, too, aspires to be a song for those who have finally come home to themselves, and a transcendental etude for all who continue forward believing in invisible connections.
+            This work cites and reconfigures passages from Transcendental Etude by Adrienne Rich. As Rich writes, the act of gathering the shards of a shattered mirror and weaving them into a pattern that never existed before closely resembles my own way of working. We are born, after all, into the midst of a difficult movement already sounding—before we have even learned how to read the beat. This seemingly useless web, too, aspires to be a song for those who have finally come home to themselves, and a transcendental etude for all who continue forward believing in invisible connections.
             </p>
           </div>
 
@@ -74,6 +74,9 @@ This work cites and reconfigures passages from Transcendental Etude by Adrienne 
                 loading={index === 0 ? "eager" : "lazy"}
               />
             ))}
+            <div className={styles.iframeContainer}>
+              <iframe className={styles.iframe} src="https://transcendentaletudeforeveryone.netlify.app" width="100%" height="100%" style={{ border: "none" }}></iframe>
+            </div>
             <a className={styles.websiteLink} href="https://transcendentaletudeforeveryone.netlify.app" target="_blank" rel="noreferrer">
             https://transcendentaletudeforeveryone.netlify.app
               </a>

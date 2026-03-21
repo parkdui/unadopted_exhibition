@@ -5,6 +5,10 @@ import styles from "@/styles/Project1.module.css";
 
 const PROJECT_COUNT = 6;
 const CURRENT_PROJECT = 1;
+const ROTATED_SPREAD_NUMBERS = new Set([
+  4, 5, 9, 10, 11, 12, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 29, 30, 31,
+  32, 33, 34, 35, 38, 39, 40, 41, 42, 43, 46, 47, 50, 51,
+]);
 
 export default function Project1Page() {
   const router = useRouter();
@@ -69,7 +73,9 @@ export default function Project1Page() {
             {spreadImageSources.map((src, index) => (
               <img
                 key={src}
-                className={styles.heroImage}
+                className={`${styles.heroImage} ${
+                  ROTATED_SPREAD_NUMBERS.has(index + 1) ? styles.rotatedSpread : ""
+                }`}
                 src={src}
                 alt={`Project 1 spread visual ${index + 1}`}
                 loading="lazy"
