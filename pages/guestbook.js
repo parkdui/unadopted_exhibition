@@ -31,13 +31,14 @@ function toDateLabel(value) {
 }
 
 export default function GuestbookPage() {
+  const [isEnglish, setIsEnglish] = useState(false);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [entries, setEntries] = useState([]);
   const [isLoadingEntries, setIsLoadingEntries] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loadError, setLoadError] = useState("");
-  const [submitError, setSubmitError] = useState("");
+  const [submitError, setSubmitError] = useState(false);
   const entriesRef = useRef(entries);
   const listInnerRef = useRef(null);
   const cardElementsRef = useRef(new Map());
@@ -52,6 +53,32 @@ export default function GuestbookPage() {
     return `${yyyy}.${mm}.${dd}.`;
   }, []);
 
+  const inputText = isEnglish
+    ? {
+        title: "Guestbook",
+        description: (
+          <>
+            Leave your words here.
+            <br />
+            We will adopt them, thanks.
+          </>
+        ),
+        namePlaceholder: "Name",
+        messagePlaceholder: "Message",
+        submitIdle: "Drop",
+        submitLoading: "Saving...",
+        submitError: "Could not save your message. Please try again in a moment.",
+      }
+    : {
+        title: "방명록 아이들",
+        description: "할 말은 여기에 내려놓고 가세요",
+        namePlaceholder: "Name",
+        messagePlaceholder: "Message",
+        submitIdle: "내려놓기",
+        submitLoading: "저장 중...",
+        submitError: "메시지를 저장하지 못했어요. 잠시 후 다시 시도해주세요.",
+      };
+
   async function handleSubmit(event) {
     event.preventDefault();
     if (isSubmitting) return;
@@ -60,7 +87,7 @@ export default function GuestbookPage() {
     const nextMessage = message.trim();
     if (!nextName || !nextMessage) return;
 
-    setSubmitError("");
+    setSubmitError(false);
     setIsSubmitting(true);
     try {
       await addDoc(collection(db, "guestbookEntries"), {
@@ -73,7 +100,7 @@ export default function GuestbookPage() {
       setMessage("");
     } catch (error) {
       console.error(error);
-      setSubmitError("메시지를 저장하지 못했어요. 잠시 후 다시 시도해주세요.");
+      setSubmitError(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -306,21 +333,29 @@ export default function GuestbookPage() {
             <Link className={navStyles.navItem} href="/guestbook" aria-current="page">
               Guestbook
             </Link>
+            <button
+              type="button"
+              className={`${navStyles.navItem} ${navStyles.navButton}`}
+              onClick={() => setIsEnglish((prev) => !prev)}
+              aria-pressed={isEnglish}
+            >
+              {isEnglish ? "KOR" : "EN"}
+            </button>
           </div>
         </header>
 
         <main className={styles.layout}>
           <section className={styles.inputSection}>
             <div className={styles.inputInner}>
-              <h1 className={styles.title}>방명록 아이들</h1>
-              <p className={styles.description}>할 말은 여기에 내려놓고 가세요</p>
+              <h1 className={styles.title}>{inputText.title}</h1>
+              <p className={styles.description}>{inputText.description}</p>
 
               <form className={styles.form} onSubmit={handleSubmit}>
                 <input
                   className={styles.nameInput}
                   type="text"
                   name="name"
-                  placeholder="Name"
+                  placeholder={inputText.namePlaceholder}
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   maxLength={20}
@@ -329,17 +364,17 @@ export default function GuestbookPage() {
                 <textarea
                   className={styles.messageInput}
                   name="message"
-                  placeholder="Message"
+                  placeholder={inputText.messagePlaceholder}
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
                   maxLength={300}
                   required
                 />
                 <button className={styles.submitButton} type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "저장 중..." : "내려놓기"}
+                  {isSubmitting ? inputText.submitLoading : inputText.submitIdle}
                 </button>
               </form>
-              {submitError ? <p className={`${styles.formStatus} ${styles.formError}`}>{submitError}</p> : null}
+              {submitError ? <p className={`${styles.formStatus} ${styles.formError}`}>{inputText.submitError}</p> : null}
             </div>
           </section>
 

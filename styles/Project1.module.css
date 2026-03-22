@@ -29,6 +29,20 @@
   color: #000000;
 }
 
+.navItem {
+  font-family: "Neue Haas Grotesk Display Pro", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial;
+  font-size: 18px;
+  color: #000000;
+}
+
+.navButton {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
 .hero {
   width: 100%;
   overflow: hidden;

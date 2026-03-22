@@ -1,10 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 import navStyles from "@/styles/Home.module.css";
 import styles from "@/styles/About.module.css";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function AboutPage() {
+  const [isEnglish, setIsEnglish] = useState(false);
+
   // NOTE: user-specified ScrollReveal params (must be preserved)
   const scrollRevealProps = {
     baseOpacity: 0.4,
@@ -32,6 +35,14 @@ export default function AboutPage() {
             <Link className={navStyles.navItem} href="/guestbook">
               Guestbook
             </Link>
+            <button
+              type="button"
+              className={`${navStyles.navItem} ${navStyles.navButton}`}
+              onClick={() => setIsEnglish((prev) => !prev)}
+              aria-pressed={isEnglish}
+            >
+              {isEnglish ? "KOR" : "EN"}
+            </button>
           </div>
         </header>
 

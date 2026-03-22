@@ -12,6 +12,7 @@ export default function Home() {
   const router = useRouter();
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [bootReady, setBootReady] = useState(false);
+  const [isEnglish, setIsEnglish] = useState(false);
 
   useEffect(() => {
     let shouldShow = true;
@@ -61,6 +62,14 @@ export default function Home() {
             <Link className={styles.navItem} href="/guestbook">
               Guestbook
             </Link>
+            <button
+              type="button"
+              className={`${styles.navItem} ${styles.navButton}`}
+              onClick={() => setIsEnglish((prev) => !prev)}
+              aria-pressed={isEnglish}
+            >
+              {isEnglish ? "KOR" : "EN"}
+            </button>
           </div>
         </header>
 
@@ -207,7 +216,7 @@ function FallingCircles({ active }) {
   }, [isHandheld, motionNeedsPermission, motionSupported]);
 
   const circles = useMemo(() => {
-    const colors = ["#FBF130", "#FB3D3D", "#FF9B4E", "#14F86C", "#60A0FB", "#60A0FB"];
+    const colors = ["#FBF130", "#FB3D3D", "#FF9B4E", "#14F86C", "#60A0FB", "#D46FFC"];
     const lefts = [12, 28, 44, 60, 76, 90]; // %
     function mulberry32(seed) {
       let t = seed >>> 0;
@@ -225,7 +234,7 @@ function FallingCircles({ active }) {
       const startOffset = 120 + Math.round(rand() * 540);
       const startY = -startOffset;
       // Start falling from 1s after load, but each circle differs.
-      const delayMs = 1000 + Math.round(rand() * 1400);
+      const delayMs = 500 + Math.round(rand() * 1400);
       const vx0 = (rand() * 2 - 1) * 120; // px/s
       const vy0 = rand() * 40; // px/s
 

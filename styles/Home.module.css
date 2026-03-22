@@ -35,6 +35,13 @@
   word-wrap: break-word;
 }
 
+.navButton {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
 .hero {
   padding: 120px 32px 0;
   position: relative;
@@ -138,12 +145,24 @@
   background: #000000;
   will-change: transform;
   touch-action: manipulation;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .circle:hover,
 .circle:focus-visible {
   background: var(--hover-color, #000000);
+  filter: saturate(1.08);
+  animation: circleHoverPulse 0.24s ease-out;
 }
+
+/* @keyframes circleHoverPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.16);
+  }
+} */
 
 .circle:focus-visible {
   outline: 3px solid rgba(0, 0, 0, 0.35);

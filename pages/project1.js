@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import styles from "@/styles/Project1.module.css";
 
 const PROJECT_COUNT = 6;
@@ -12,6 +13,7 @@ const ROTATED_SPREAD_NUMBERS = new Set([
 
 export default function Project1Page() {
   const router = useRouter();
+  const [isEnglish, setIsEnglish] = useState(false);
   const heroImageUrl = "/exhibition_src/1_eogeumni/1.jpg";
   const firstMediaImageUrl = "/exhibition_src/1_eogeumni/2.jpg";
   const spreadImageSources = Array.from(
@@ -29,15 +31,23 @@ export default function Project1Page() {
       <main className={styles.page}>
         <header className={styles.nav}>
           <div className={styles.navInner}>
-            <Link className={styles.navLink} href="/">
+            <Link className={styles.navItem} href="/">
               Home
             </Link>
-            <Link className={styles.navLink} href="/about">
+            <Link className={styles.navItem} href="/about">
               About
             </Link>
-            <Link className={styles.navLink} href="/guestbook">
+            <Link className={styles.navItem} href="/guestbook">
               Guestbook
             </Link>
+            <button
+              type="button"
+              className={`${styles.navItem} ${styles.navButton}`}
+              onClick={() => setIsEnglish((prev) => !prev)}
+              aria-pressed={isEnglish}
+            >
+              {isEnglish ? "KOR" : "EN"}
+            </button>
           </div>
         </header>
 
