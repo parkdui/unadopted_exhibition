@@ -102,6 +102,7 @@
   line-height: 160%; /* 38.4px */
   color: #1E1E1E;
   font-family: "Pretendard Variable";
+  word-break: break-word;
 }
 
 .descriptionEn {
@@ -116,6 +117,7 @@
   line-height: 160%; /* 38.4px */
   color: #1E1E1E;
   font-family: "Pretendard Variable";
+  word-break: break-word;
 }
 
 .mediaStack {

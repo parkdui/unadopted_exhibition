@@ -47,9 +47,9 @@ export default function Project6Page() {
 
         <section className={styles.content}>
           <div className={styles.intro}>
-            <p className={styles.name}>작가명</p>
+            <p className={styles.name}>홍유라</p>
             <div className={styles.titleWrap}>
-              <h1 className={styles.title}>프로젝트 제목</h1>
+              <h1 className={styles.title}>Self Lecture Series</h1>
               <p className={styles.subtitle}>프로젝트 부제목</p>
             </div>
           </div>
@@ -74,6 +74,9 @@ export default function Project6Page() {
                 <p className={styles.hintTitle}>프로젝트 이미지 A type</p>
               </div>
             </div>
+            <a className={styles.websiteLink} href="https://yourahong.com/self-lecture/index.html" target="_blank" rel="noreferrer">
+            https://yourahong.com/self-lecture/index.html
+              </a>
           </div>
         </section>
 

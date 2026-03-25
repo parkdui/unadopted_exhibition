@@ -47,24 +47,28 @@ export default function Project4Page() {
 
         <section className={styles.content}>
           <div className={styles.intro}>
-            <p className={styles.name}>작가명</p>
+            <p className={styles.name}>박혜빈</p>
             <div className={styles.titleWrap}>
-              <h1 className={styles.title}>프로젝트 제목</h1>
-              <p className={styles.subtitle}>프로젝트 부제목</p>
+              <h1 className={styles.title}>UNLOCKED ARCHIVED MUSEUM</h1>
+              <p className={styles.subtitle}>락커 안 답사기, 뮤지엄 보관소</p>
             </div>
           </div>
 
           <div className={styles.descriptionKo}>
             <p>
-              이것은 작품 설명입니다. 이것은 단지 예시를 나타내기 위한 더미 텍스트입니다. 진짜 텍스트가 아직
-              아닙니다. 참고만 부탁드립니다. 이것은 작품 설명입니다. 이것은 단지 예시를 나타내기 위한 더미
-              텍스트입니다. 진짜 텍스트가 아직 아닙니다. 참고만 부탁드립니다.
+            이 웹사이트는 박혜빈이 2025년 9월부터 2026년 1월까지 다녀온 유럽 뮤지엄 답사기이다. 총 29곳을 방문하였으며, 그중 깊은 감명을 받은 일부의 답사기를 담았다. 이곳에는 각 뮤지엄에 있는 락커 또는 네모난 형태의 사물들이 쌓여 있다. 
+
+락커를 열고 지극히 개인적인 답사기를 읽어주시길 바란다. 전문적인 분석은 아니지만 각 뮤지엄만의 고유한 태도를 찾아내고자 했다. 언젠가 나 또한 소장품뿐만 아니라 리플렛과 벤치로, 작가뿐만이 아니라 사회가 하고 싶은 말을 전하는 그곳들 중 하나에서 제작자로 일할 수 있길 바라며···.<br /><br />
             </p>
           </div>
           <div className={styles.descriptionEn}>
             <p>
-              This is a paragraph of description of the project above. This is just a test text, not a real one.
-              This is a paragraph of description of the project above. This is just a test text, not a real one.
+            This website is a record of  Park Hyebin’s visits to European museums from September 2025 to January 2026.
+Among the 29 museums visited, a selection of those that left a lasting impression is presented here. In this space, lockers—or box-like objects found in each museum—are stacked together.
+You are invited to open each locker and read these deeply personal reflections.
+
+Though not a professional analysis, this project attempts to trace the distinct attitude of each museum. Beyond collections, it looks at leaflets, benches, and spatial elements - at how these places communicate what society seeks to express, not only through artists but through the institution itself. One day, I hope to become a maker within such a space—
+one that speaks, in its own way.
             </p>
           </div>
 
@@ -74,17 +78,20 @@ export default function Project4Page() {
                 <p className={styles.hintTitle}>프로젝트 이미지 A type</p>
               </div>
             </div>
+            <a className={styles.websiteLink} href="https://kkoomool.vercel.app/" target="_blank" rel="noreferrer">
+                https://kkoomool.vercel.app/
+              </a>
           </div>
         </section>
 
         <footer className={styles.footerMeta}>
           <div className={styles.metaRow}>
             <span className={styles.metaLabel}>IG</span>
-            <a  className={styles.websiteLink} href="https://www.instagram.com/jiweon554/" target="_blank" rel="noreferrer">@jiweon554</a>
+            <a  className={styles.websiteLink} href="https://www.instagram.com/bagaebin/" target="_blank" rel="noreferrer">@bagaebin</a>
           </div>
           <div className={styles.metaRow}>
             <span className={styles.metaLabel}>Email</span>
-            <a  className={styles.websiteLink} href="mailto:parkgiwon050@gmail.com" target="_blank" rel="noreferrer">parkgiwon050@gmail.com</a>
+            <a  className={styles.websiteLink} href="mailto:bagaebin0@gmail.com" target="_blank" rel="noreferrer">bagaebin0@gmail.com</a>
           </div>
         </footer>
 
