@@ -72,7 +72,7 @@ export default function AboutPage() {
           <section className={styles.descriptionSection}>
             <div className={styles.descKo}>
               <ScrollReveal {...scrollRevealProps}>
-                디자이너로서, 아티스트로서, 그냥 뭔가를 만드는 행위를 멈추지 않고서는 못 베기는
+                디자이너로서, 아티스트로서, 그냥 뭔가를 만드는 행위를 멈추지 않고서는 못 배기는
                 창작자들이 소중히 키워 온 아이디어가 있습니다. 상업성이 없다는 이유로, 대중성이
                 없다는 이유로, 혹은 너무 ‘아티스트' 같다는 이유만으로 뽑히지 못한 아이디어들은
                 성장을 멈추곤 합니다. 이리저리 치이다가 결국 빛을 보지 못하고 마음 한 켠에
