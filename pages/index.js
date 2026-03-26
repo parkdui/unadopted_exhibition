@@ -6,6 +6,7 @@ import styles from "@/styles/Home.module.css";
 
 const ONBOARDING_KEY = "unadopted:onboarding:v1";
 const PROJECT_COUNT = 6;
+const NOT_OPENED_PROJECTS = new Set([2, 4, 6]);
 const PLAYFIELD_HEIGHT_RATIO = 0.8;
 
 export default function Home() {
@@ -89,6 +90,10 @@ export default function Home() {
             className={styles.randomAdoptButton}
             onClick={() => {
               const randomProject = Math.floor(Math.random() * PROJECT_COUNT) + 1;
+              if (NOT_OPENED_PROJECTS.has(randomProject)) {
+                router.push("/notOpen");
+                return;
+              }
               router.push(`/project${randomProject}`);
             }}
           >
@@ -606,6 +611,10 @@ function FallingCircles({ active }) {
               if (e.button !== 0) return;
               if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
               e.preventDefault();
+              if (NOT_OPENED_PROJECTS.has(c.id)) {
+                router.push("/notOpen");
+                return;
+              }
               router.push(href);
             }}
             style={{
