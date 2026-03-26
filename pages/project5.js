@@ -6,6 +6,14 @@ import styles from "@/styles/Project1.module.css";
 
 const PROJECT_COUNT = 6;
 const CURRENT_PROJECT = 5;
+const NOT_OPENED_PROJECTS = new Set([2, 4, 6]);
+
+function getProjectDestination(projectId) {
+  if (NOT_OPENED_PROJECTS.has(projectId)) {
+    return `/notOpen?project=${projectId}`;
+  }
+  return `/project${projectId}`;
+}
 
 export default function Project5Page() {
   const router = useRouter();
@@ -127,7 +135,7 @@ export default function Project5Page() {
               while (randomProject === CURRENT_PROJECT) {
                 randomProject = Math.floor(Math.random() * PROJECT_COUNT) + 1;
               }
-              router.push(`/project${randomProject}`);
+              router.push(getProjectDestination(randomProject));
             }}
           >
             Click to adopt another one!

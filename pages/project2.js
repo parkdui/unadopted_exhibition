@@ -6,6 +6,14 @@ import styles from "@/styles/Project1.module.css";
 
 const PROJECT_COUNT = 6;
 const CURRENT_PROJECT = 2;
+const NOT_OPENED_PROJECTS = new Set([2, 4, 6]);
+
+function getProjectDestination(projectId) {
+  if (NOT_OPENED_PROJECTS.has(projectId)) {
+    return `/notOpen?project=${projectId}`;
+  }
+  return `/project${projectId}`;
+}
 
 export default function Project2Page() {
   const router = useRouter();
@@ -13,7 +21,7 @@ export default function Project2Page() {
   const heroImageUrl = "https://www.figma.com/api/mcp/asset/5af4d540-6eca-4e8b-9d45-bafd85c3214c";
 
   useEffect(() => {
-    router.replace("/notOpen");
+    router.replace("/notOpen?project=2");
   }, [router]);
 
   return (
@@ -106,7 +114,7 @@ export default function Project2Page() {
               while (randomProject === CURRENT_PROJECT) {
                 randomProject = Math.floor(Math.random() * PROJECT_COUNT) + 1;
               }
-              router.push(`/project${randomProject}`);
+              router.push(getProjectDestination(randomProject));
             }}
           >
             Click to adopt another one!

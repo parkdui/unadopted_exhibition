@@ -9,6 +9,13 @@ const PROJECT_COUNT = 6;
 const NOT_OPENED_PROJECTS = new Set([2, 4, 6]);
 const PLAYFIELD_HEIGHT_RATIO = 0.8;
 
+function getProjectDestination(projectId) {
+  if (NOT_OPENED_PROJECTS.has(projectId)) {
+    return `/notOpen?project=${projectId}`;
+  }
+  return `/project${projectId}`;
+}
+
 export default function Home() {
   const router = useRouter();
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -90,11 +97,7 @@ export default function Home() {
             className={styles.randomAdoptButton}
             onClick={() => {
               const randomProject = Math.floor(Math.random() * PROJECT_COUNT) + 1;
-              if (NOT_OPENED_PROJECTS.has(randomProject)) {
-                router.push("/notOpen");
-                return;
-              }
-              router.push(`/project${randomProject}`);
+              router.push(getProjectDestination(randomProject));
             }}
           >
             Click to randomly adopt!
@@ -596,12 +599,13 @@ function FallingCircles({ active }) {
         </button>
       ) : null}
       {circles.map((c, idx) => {
-        const href = `/project${c.id}`;
+        const href = getProjectDestination(c.id);
+        const isNotOpened = NOT_OPENED_PROJECTS.has(c.id);
         return (
           <a
             key={c.id}
             href={href}
-            className={styles.circle}
+            className={`${styles.circle} ${isNotOpened ? styles.circleNotOpen : ""}`}
             aria-label={`Open project ${c.id}`}
             ref={(el) => {
               elsRef.current[idx] = el;
@@ -611,10 +615,6 @@ function FallingCircles({ active }) {
               if (e.button !== 0) return;
               if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
               e.preventDefault();
-              if (NOT_OPENED_PROJECTS.has(c.id)) {
-                router.push("/notOpen");
-                return;
-              }
               router.push(href);
             }}
             style={{
@@ -622,7 +622,9 @@ function FallingCircles({ active }) {
               height: `${c.size}px`,
               "--hover-color": c.color,
             }}
-          />
+          >
+            {isNotOpened ? <span className={styles.constructionLabel}>공사 중입니다!</span> : null}
+          </a>
         );
       })}
     </div>

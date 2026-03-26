@@ -138,6 +138,21 @@ export default function AboutPage() {
               </div>
           </section>
 
+          <section className={styles.creditPlanSection}>
+            <div className={styles.creditTitlePlan}>기획</div>
+            <div className={styles.creditDescriptionPlan}>
+              <p>권도연</p>
+              <p>박지원</p>
+            </div>
+          </section>
+
+          <section className={styles.creditDevSection}>
+            <div className={styles.creditTitleDev}>웹 개발</div>
+            <div className={styles.creditDescriptionDev}>
+              <p>박지원</p>
+            </div>
+          </section>
+
           <section className={styles.participantsSection}>
             <div className={styles.participantsTitle}>참여한 사람들</div>
             <div className={styles.participantsDescription}>
@@ -149,6 +164,7 @@ export default function AboutPage() {
               <p>홍유라</p>
               </div>
           </section>
+          
         </main>
       </div>
     </>
