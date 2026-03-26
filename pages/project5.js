@@ -109,11 +109,11 @@ export default function Project5Page() {
             <span className={styles.metaLabel}>Email</span>
             <a
               className={styles.websiteLink}
-              href="mailto:tide1h@gmail.com"
+              href="mailto:chosuhyeon21@gmail.com"
               target="_blank"
               rel="noreferrer"
             >
-              tide1h@gmail.com
+              chosuhyeon21@gmail.com
             </a>
           </div>
         </footer>
