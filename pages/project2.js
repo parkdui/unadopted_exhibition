@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "@/styles/Project1.module.css";
 
 const PROJECT_COUNT = 6;
 const CURRENT_PROJECT = 2;
-const NOT_OPENED_PROJECTS = new Set([2, 4, 6]);
+const NOT_OPENED_PROJECTS = new Set([4, 6]);
 
 function getProjectDestination(projectId) {
   if (NOT_OPENED_PROJECTS.has(projectId)) {
@@ -18,11 +18,17 @@ function getProjectDestination(projectId) {
 export default function Project2Page() {
   const router = useRouter();
   const [isEnglish, setIsEnglish] = useState(false);
-  const heroImageUrl = "https://www.figma.com/api/mcp/asset/5af4d540-6eca-4e8b-9d45-bafd85c3214c";
+  const heroImageUrl = "/exhibition_src/2_magi/1.jpg";
+  const mediaImageSources = [
+    "/exhibition_src/2_magi/2.webp",
+    "/exhibition_src/2_magi/3.jpg",
+    "/exhibition_src/2_magi/4.jpg",
+  ];
 
-  useEffect(() => {
-    router.replace("/notOpen?project=2");
-  }, [router]);
+
+  // useEffect(() => {
+  //   router.replace("/notOpen?project=2");
+  // }, [router]);
 
   return (
     <>
@@ -83,11 +89,15 @@ export default function Project2Page() {
           </div>
 
           <div className={styles.mediaStack}>
-            <div className={`${styles.grayBox} ${styles.grayBoxSmall}`}>
-              <div className={styles.hintText}>
-                <p className={styles.hintTitle}>프로젝트 이미지 A type</p>
-              </div>
-            </div>
+            {mediaImageSources.map((src, index) => (
+              <img
+                key={src}
+                className={styles.heroImage}
+                src={src}
+                alt={`Project 2 visual ${index + 2}`}
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            ))}
             <a className={styles.websiteLink} href="https://magigyaru.vercel.app/" target="_blank" rel="noreferrer">
             https://magigyaru.vercel.app/
               </a>

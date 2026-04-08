@@ -19,7 +19,7 @@ const videoSource = "/exhibition_src/3_kkoomool/Gray10.webm";
 const mediaImageSources = imageSources.slice(1);
 const PROJECT_COUNT = 6;
 const CURRENT_PROJECT = 3;
-const NOT_OPENED_PROJECTS = new Set([2, 4, 6]);
+const NOT_OPENED_PROJECTS = new Set([4, 6]);
 
 function getProjectDestination(projectId) {
   if (NOT_OPENED_PROJECTS.has(projectId)) {

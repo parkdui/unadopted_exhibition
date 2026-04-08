@@ -6,7 +6,7 @@ import styles from "@/styles/Home.module.css";
 
 const ONBOARDING_KEY = "unadopted:onboarding:v1";
 const PROJECT_COUNT = 6;
-const NOT_OPENED_PROJECTS = new Set([2, 4, 6]);
+const NOT_OPENED_PROJECTS = new Set([4, 6]);
 const PLAYFIELD_HEIGHT_RATIO = 0.8;
 
 function getProjectDestination(projectId) {
